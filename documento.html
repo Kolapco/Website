@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento Técnico - TASER X26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/documento.css">
+    <style>
+        /* Adicione o CSS para o menu aqui */
+        header {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 30px 10%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #003366;
+        }
+
+        .nav-list li {
+            margin: 0;
+        }
+
+        .nav-list li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 14px 20px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list li a:hover {
+            color: #ff9800;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 250px;
+                height: 100%;
+                background-color: #003366;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-list.open {
+                transform: translateX(0);
+            }
+
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                cursor: pointer;
+                margin: 10px;
+            }
+
+            .menu-toggle span {
+                height: 3px;
+                width: 25px;
+                background: white;
+                margin-bottom: 4px;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="/Videos-fotos/IMG-20240531-WA0058.jpg" alt="TASER X26">
+            </div>
+            <div class="menu-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <h1>TASER X26</h1>
+        <h2>Documento Técnico</h2>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="/index.html">HOME</a></li>
+                <li><a href="/VIDEO.html">VIDEO</a></li>
+                <li><a href="#documento">Documentos</a></li>
+                <li><a href="#ficha-tecnica">Ficha Técnica</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="introducao">
+        <h3>Introdução</h3>
+        <p>Este documento apresenta a descrição técnica e ficha técnica da arma não-letal TASER X26, utilizada para controle de situações adversas com mínima letalidade e máximo controle.</p>
+    </section>
+
+    <section id="descricao">
+        <h3>Descrição Técnica</h3>
+        <p>A Arma Não-Letal de Pressão por Ação de Gás Comprimido, que emite “ondas T” (forma de onda semelhante à onda cerebral), com ação direta sobre o sistema nervoso sensorial e sistema nervoso motor do oponente, de forma a paralisá-lo, reduzindo ao máximo possível qualquer possibilidade de dano físico em decorrência da ação da mesma.</p>
+    </section>
+    
+    <section id="documento">
+        <h3>Documentos Técnicos em PDF</h3>
+        <embed src="/Videos-fotos/AXON.pdf" width="50%" height="400px" type="application/pdf">
+        <embed src="/Videos-fotos/X26P Manual.pdf" width="50%" height="400px" type="application/pdf">
+    </section>
+
+    <section id="ficha-tecnica">
+        <h3>Ficha Técnica</h3>
+        <table>
+            <tr>
+                <th>Dimensões e peso da arma</th>
+                <td>Comprimento: 15,24 cm; Altura: 8,13 cm; Largura: 3,30 cm; Peso: 204,12 gramas.</td>
+            </tr>
+            <tr>
+                <th>Comprimento com o cartucho</th>
+                <td>18,52 cm</td>
+            </tr>
+            <tr>
+                <th>Forma de Onda</th>
+                <td>Pulso de forma complexa / pulso “formatado”.</td>
+            </tr>
+            <tr>
+                <th>Taxa de Pulso</th>
+                <td>19 pulsos por segundo.</td>
+            </tr>
+            <tr>
+                <th>Duração do Pulso</th>
+                <td>100 microssegundos.</td>
+            </tr>
+            <tr>
+                <th>Pico de tensão do arco voltaico</th>
+                <td>Em circuito aberto: 50.000 Volts; em contato: 1.200 Volts.</td>
+            </tr>
+        </table>
+    </section>
+
+    <footer>
+        <p>© 2024 TASER X26 - Documento Técnico. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navList = document.querySelector('.nav-list');
+            let menuTimeout;
+
+            menuToggle.addEventListener('click', () => {
+                navList.classList.toggle('open');
+
+                if (navList.classList.contains('open')) {
+                    // Define um timeout para fechar o menu após 1000 segundos
+                    menuTimeout = setTimeout(() => {
+                        navList.classList.remove('open');
+                    }, 1000); // 1000 segundos
+                } else {
+                    clearTimeout(menuTimeout);
+                }
+            });
+
+            // Fecha o menu se o usuário clicar fora dele
+            document.addEventListener('click', (event) => {
+                if (!menuToggle.contains(event.target) && !navList.contains(event.target)) {
+                    navList.classList.remove('open');
+                    clearTimeout(menuTimeout); // Limpa o timeout se o usuário clicar fora
+                }
+            });
+        });
+    </script>
+</body>
+</html>
